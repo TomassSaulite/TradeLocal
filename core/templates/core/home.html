@@ -1,1 +1,42 @@
 {% extends "base.html" %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+
+
+{% block content %}
+<br>
+    <br>
+    <br>
+<div class="container  vw-100 d-flex flex-column justify-content-end">
+    <div class="row">
+        <div class=" m-auto p-auto pt-5 col-6 ">
+            <h1>Find anything <br> You might need</h1>
+        </div>
+        {% comment %} <div class=" pt-5 col-6">
+            <h1> Look up what you might need: </h1>
+        </div>  {% endcomment %}
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row">
+        <div class="m-auto p-auto w-50 text-center">
+                <div class="input-group">
+                    <button type="button" class="btn btn-secondary">
+                        <i class="bi bi-search"></i>
+                    </button>
+                    <input type="text" class="form-control" placeholder="What are you looking for?" aria-label="Input group example" aria-describedby="basic-addon1">
+                </div>
+                </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}
