@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+
+
+{% block content %}
+
+{% comment %} <div class="container-fluid">
+  <div class="row justify-content-center">
+    {% for listing in listings %}
+      <div class="col-sm-6 col-md-4 col-lg-3 mb-4 d-flex align-items-stretch">
+        <div class="card w-100">
+          <img src="{{ listing.image.url }}" alt="{{ listing.title }}" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">{{ listing.title }}</h5>
+            <p class="card-text">{{ listing.description }}</p>
+            <a href="#" class="btn btn-primary">{{ listing.price }}</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p>You have not created any listings yet.</p>
+    {% endfor %}
+  </div>
+</div> {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

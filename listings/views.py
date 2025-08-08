@@ -8,6 +8,13 @@ from .models import Listing
 
 
 
+def allListings(request):
+    listings = Listing.objects
+    return render(request, 'listings/allListings.html', {'listings': listings})
+
+
+
+
 @login_required
 def userListings(request):
     listings = Listing.objects.filter(owner=request.user)
