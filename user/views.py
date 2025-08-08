@@ -14,7 +14,7 @@ def login_view(request):
         if user is not None:
             login(request, user)
             print("\033[93m"+f'User {username} logged in!'+"\033[0m")
-            return redirect('/core/home/')  # Redirect after login
+            return redirect('home')  # Redirect after login
         else:
             print("\033[93m"+f'Login failed for user: {username}'+"\033[0m")
             messages.error(request,"Invalid credentials")
