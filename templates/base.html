@@ -30,6 +30,9 @@
                             {% comment %} <a class="nav-link">My Listings</a> {% endcomment %}
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{% url 'createListing' %}">Create Listing</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{% url 'logout_view' %}">Logout</a>
                         </li>
                         {% comment %} <a class="nav-link active">Logout</a> {% endcomment %}
