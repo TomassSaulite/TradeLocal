@@ -7,9 +7,34 @@
 
 
 {% block content %}
-<h1>signup page</h1>
 
 
+<div classs = "container vw-100 d-flex flex-column justify-content-end">
+    <div class = "row">
+        <div class = "col-6 m-auto p-auto text-center pt-5">
+            <h1>Sign Up</h1>
+            {% if messages %}
+            <ul style="list-style-type:none">
+                {% for message in messages %}
+                    <li style="text-decoration:none">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                <label>Username:</label><br>
+                <input type="text" name="username"><br><br>
+                <label>Email:</label><br>
+                <input type="email" name="email"><br><br>
+                <label>Password:</label><br>
+                <input type="password" name="password"><br><br>
+                <label>Confirm password:</label><br>
+                <input type="password" name="password2"><br><br>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 
 {% endblock %}
