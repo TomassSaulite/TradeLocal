@@ -1,8 +1,15 @@
 from django.contrib import admin
-from django.urls import path, include  # Add include here
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('core.urls')),  # Include hello app urls here
-    path('user/', include('user.urls')),  # Include hello app urls here
+    path('', include('core.urls')), 
+    path('user/', include('user.urls')),
+    path('listings/', include('listings.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

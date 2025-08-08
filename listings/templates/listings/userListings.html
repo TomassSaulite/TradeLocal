@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<ul>
+    {% for listing in listings  %}
+        <li>{{ listing.title }}</li>
+        <br>
+        <li>{{ listing.description }}</li>
+        <br>
+        <li>{{ listing.price }}</li>
+        <br>
+        <li>  <img src="{{ listing.image.url }}" alt="{{ listing.title }}" style="max-width:300px;">
+</li>
+        
+    {% empty %}
+        <li>You have not created any listings yet.</li>
+    {% endfor %}
+</ul>
+
+
+
+<button><a href="{% url 'createListing' %}">Create listing</a> </button>
+
+
+
+
+
+
+
+
+
+{% endblock %}
