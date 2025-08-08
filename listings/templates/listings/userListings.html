@@ -8,26 +8,26 @@
 
 {% block content %}
 
-
-<ul>
-    {% for listing in listings  %}
-        <li>{{ listing.title }}</li>
-        <br>
-        <li>{{ listing.description }}</li>
-        <br>
-        <li>{{ listing.price }}</li>
-        <br>
-        <li>  <img src="{{ listing.image.url }}" alt="{{ listing.title }}" style="max-width:300px;">
-</li>
-        
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    {% for listing in listings %}
+      <div class="col-sm-6 col-md-4 col-lg-3 mb-4 d-flex align-items-stretch">
+        <div class="card w-100">
+          <img src="{{ listing.image.url }}" alt="{{ listing.title }}" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">{{ listing.title }}</h5>
+            <p class="card-text">{{ listing.description }}</p>
+            <a href="#" class="btn btn-primary">{{ listing.price }}</a>
+          </div>
+        </div>
+      </div>
     {% empty %}
-        <li>You have not created any listings yet.</li>
+      <p>You have not created any listings yet.</p>
     {% endfor %}
-</ul>
+  </div>
+</div>
 
 
-
-<button><a href="{% url 'createListing' %}">Create listing</a> </button>
 
 
 
