@@ -17,22 +17,54 @@
     {% endfor %}
 </ul>
 {% endif %}
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <label>title:</label><br>
-    <input type="text" name="title"><br><br>
-    <label>description:</label><br>
-    <input type="text" name="description"><br><br>
-    <label>price:</label><br>
-    <input type="number" name="price"><br><br>
-    <label>Contact number:</label><br>
-    <input type="tel" name="phoneNum"><br><br>
-    <label>Contact email:</label><br>
-    <input type="email" name="email"><br><br>
-    <label>image:</label><br>
-    <input type="file" name="image"><br><br>
-    <button type="submit">Create</button>
-</form>
 
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-sm my-5">
+        <div class="card-body">
+          <h4 class="card-title mb-4 text-center">Create Listing</h4>
+          <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+            {% csrf_token %}
+
+            <div class="mb-3">
+              <label for="title" class="form-label">Title</label>
+              <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="price" class="form-label">Price</label>
+              <input type="number" class="form-control" id="price" name="price" step="0.01" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="phoneNum" class="form-label">Contact Number</label>
+              <input type="tel" class="form-control" id="phoneNum" name="phoneNum">
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Contact Email</label>
+              <input type="email" class="form-control" id="email" name="email">
+            </div>
+
+            <div class="mb-3">
+              <label for="image" class="form-label">Image</label>
+              <input type="file" class="form-control" id="image" name="image">
+            </div>
+
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
