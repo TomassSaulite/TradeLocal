@@ -9,47 +9,38 @@
 {% block content %}
 
 
-
-{% if messages %}
-<ul style="list-style-type:none">
-    {% for message in messages %}
-        <li style="text-decoration:none">{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-6">
       <div class="card shadow-sm my-5">
         <div class="card-body">
-          <h4 class="card-title mb-4 text-center">Create Listing</h4>
-          <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+          <h4 class="card-title mb-4 text-center">Edit Listing</h4>
+          <form method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
             {% csrf_token %}
 
             <div class="mb-3">
               <label for="title" class="form-label">Title</label>
-              <input type="text" class="form-control" id="title" name="title" required>
+              <input type="text" class="form-control" id="title" name="title" value="{{ listing.title }}" required>
             </div>
 
             <div class="mb-3">
               <label for="description" class="form-label">Description</label>
-              <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+              <textarea class="form-control" id="description" name="description" rows="4" required>{{ listing.description }}</textarea>
             </div>
 
             <div class="mb-3">
               <label for="price" class="form-label">Price</label>
-              <input type="number" class="form-control" id="price" name="price" step="0.01" required>
+              <input type="number" class="form-control" id="price" name="price" step="0.01" value="{{ listing.price }}" required>
             </div>
 
             <div class="mb-3">
-              <label for="phoneNum" class="form-label">Contact Number</label>
-              <input type="tel" class="form-control" id="phoneNum" name="phoneNum">
+              <label for="phoneNum" class="form-label">Phone Number</label>
+              <input type="text" class="form-control" id="phoneNum" name="phoneNum" value="{{ listing.phoneNum }}">
             </div>
 
             <div class="mb-3">
-              <label for="email" class="form-label">Contact Email</label>
-              <input type="email" class="form-control" id="email" name="email">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" name="email" value="{{ listing.email }}">
             </div>
 
             <div class="mb-3">
@@ -58,7 +49,7 @@
             </div>
 
             <div class="d-grid">
-              <button type="submit" class="btn btn-primary">Create</button>
+              <button type="submit" class="btn btn-success">Save Changes</button>
             </div>
           </form>
         </div>
@@ -66,5 +57,6 @@
     </div>
   </div>
 </div>
+
 
 {% endblock %}

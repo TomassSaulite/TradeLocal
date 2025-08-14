@@ -18,10 +18,15 @@
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal{{ listing.id }}">
               {{ listing.price }}
             </button>
+            <a class="btn btn-warning" href="{% url 'listings:editListing' listing.id %}">Edit</a>
+            <form method="post" action="{% url 'listings:removeListing' listing.id %}" style="display:inline;">
+                {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Remove</button>
+            </form>
           </div>
         </div>
       </div>
-      
+
       <div class="modal fade" id="modal{{ listing.id }}" tabindex="-1" aria-labelledby="modalLabel{{ listing.id }}" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">

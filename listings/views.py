@@ -1,11 +1,47 @@
 from django.contrib.auth import authenticate, login
-from django.shortcuts import render, redirect
+from django.shortcuts import render,get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import Listing
 
+@login_required
+def editListing(request, id):
+    listing = get_object_or_404(Listing, id=id, owner=request.user)
+
+    if request.method == 'POST':
+        listing.title = request.POST.get('title', listing.title)
+        listing.description = request.POST.get('description', listing.description)
+        listing.phoneNum = request.POST.get('phoneNum', listing.phoneNum)
+        listing.email = request.POST.get('email', listing.email)
+        
+        price = request.POST.get('price')
+        if price:
+            try:
+                listing.price = float(price)
+            except ValueError:
+               
+                return render(request, 'listings/editListing.html', {
+                    'listing': listing,
+                    'error': 'Invalid price value.'
+                })
+
+        if request.FILES.get('image'):
+            listing.image = request.FILES['image']
+
+        listing.save()
+        return redirect('listings:userListings')
+
+    return render(request, 'listings/editListing.html', {'listing': listing})
+
+@login_required
+def removeListing(request, id):
+    listing = get_object_or_404(Listing, id=id, owner=request.user)
+    if request.method == "POST":
+        listing.delete()
+        return redirect('listings:userListings')
+    return redirect('listings:userListings')
 
 
 def allListings(request):
