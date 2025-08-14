@@ -5,6 +5,8 @@ from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import Listing
+import os
+from django.conf import settings
 
 @login_required
 def editListing(request, id):
@@ -39,6 +41,11 @@ def editListing(request, id):
 def removeListing(request, id):
     listing = get_object_or_404(Listing, id=id, owner=request.user)
     if request.method == "POST":
+
+        if listing.image:
+            image_path = listing.image.path
+            if os.path.isfile(image_path):
+                os.remove(image_path)
         listing.delete()
         return redirect('listings:userListings')
     return redirect('listings:userListings')
