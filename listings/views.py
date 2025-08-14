@@ -9,8 +9,17 @@ from .models import Listing
 
 
 def allListings(request):
-    listings = Listing.objects
-    return render(request, 'listings/allListings.html', {'listings': listings})
+    if request.method=="POST":
+        keyWord = request.POST['keyWord']
+        listings1 = Listing.objects.filter(title__contains=keyWord)
+        listings2 = Listing.objects.filter(description__contains=keyWord)
+        listings = listings1.union(listings2) 
+
+        return render(request, 'listings/allListings.html', {'listings': listings})
+
+    else:
+        listings = Listing.objects.all()
+        return render(request, 'listings/allListings.html', {'listings': listings})
 
 
 
@@ -31,5 +40,5 @@ def createListing(request):
         owner = request.user
         Listing.objects.create(title=title,description=description, price=price,image=image,owner=owner)
         print("\033[93m"+f'New listing created: {title.title}'+"\033[0m")
-        return redirect('userListings') 
+        return redirect('listings:userListings') 
     return render(request, 'listings/createListing.html')
