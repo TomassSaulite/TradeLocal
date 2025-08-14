@@ -37,8 +37,10 @@ def createListing(request):
         description = request.POST['description']
         price = request.POST['price']
         image = request.FILES['image']
+        phoneNum = request.POST['phoneNum']
+        email = request.POST['email']
         owner = request.user
-        Listing.objects.create(title=title,description=description, price=price,image=image,owner=owner)
+        Listing.objects.create(title=title,description=description, price=price,image=image,phoneNum=phoneNum,email=email,owner=owner)
         print("\033[93m"+f'New listing created: {title.title}'+"\033[0m")
         return redirect('listings:userListings') 
     return render(request, 'listings/createListing.html')
