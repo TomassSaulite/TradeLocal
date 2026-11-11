@@ -58,4 +58,3 @@ Both checks run automatically in GitHub Actions for pushes and pull requests.
 - Categories and price filters
 - Pagination on the listings page
 - Messaging between buyer and seller
-- Automated model and view tests
