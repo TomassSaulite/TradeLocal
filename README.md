@@ -44,13 +44,14 @@ For anything beyond local use, set your own `DJANGO_SECRET_KEY` first. The proje
 
 ## Verification
 
-Run Django's deployment-independent configuration checks with:
+Run Django's configuration checks and test suite with:
 
 ```bash
 python manage.py check
+python manage.py test
 ```
 
-This check runs automatically in GitHub Actions for pushes and pull requests.
+Both checks run automatically in GitHub Actions for pushes and pull requests.
 
 ## Possible next steps
 
