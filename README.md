@@ -38,6 +38,8 @@ python manage.py runserver
 
 Then open http://127.0.0.1:8000.
 
+For anything beyond local use, set your own secret key first: `export DJANGO_SECRET_KEY='...'` (a throwaway development key is used if it is not set).
+
 ## Possible next steps
 
 - Categories and price filters
